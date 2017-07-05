@@ -1,0 +1,24 @@
+1. allow settings panel to control:
+	1) background color - color panel
+	2) effects (optional)
+	3) shading - slider. light to strong shadow. short to long length
+	4) lighting - slider. dark to bright
+	5) additional objects
+	6) default camera (stationary, rotating, etc)
+2. connect to amazon S3 for storage of 3D models
+6. check out the yeoman generator for threejs experiments
+7. site visitor options: choose camera mode (rotation, speed, orbit etc)
+10. different compIds (components) corresponding to different canvases. same instanceId (user)
+11. control where the title is in the canvas (positioning). button group for aligning right/left
+12. optional settings on/off checkbox with shading strength, shadow length, lighting strength
+14. add option for no background. then background is just a plain
+16. show different models (from etsy perhaps). more products that wix users might actually use
+19. fix gruntfile not copying some scripts to dist and to the wrong directory (a bug within grunt. cannot fix without troublesome workarounds right now)
+20. fix gruntfile not prefixing the minified JS and CSS files with UTF 8 encoding 
+21. use ng-repeat to allow for multiple models (optional)
+22. background color of canvas not compatible with input type text/clicking. find fix/work around
+23. upon initialization of the widget, make a post request to save user IDs. consider making GET request first to check if identification already exists
+24. upon model upload, make a put request to save model path
+25. when model is uploaded, take a snapshot of the model so user can preview what model was uploaded
+26. saving/updating users: GET request on the user's identification, if success (identification exists, save the identification). if error or does not exist, save/post the identification. this logic will go in the front end
+27. in settings.js on front end, put/update the collection

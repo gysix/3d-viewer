@@ -1,0 +1,24 @@
+.view-options {
+  color: blue;
+}
+
+/*.title {
+  margin: 5px;
+}*/
+
+.options {
+  margin-top: 10px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.pull-right {
+  float: right;
+  margin-right: 10px;
+}
+
+.pull-left {
+  float: left;
+}

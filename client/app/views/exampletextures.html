@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<title>3D Viewer</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				font-family: Monospace;
+				/*background-color: #000;*/
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#info {
+				color: #fff;
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display:block;
+			}
+			#info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
+		</style>
+
+		<script type="text/javascript" src="//sslstatic.wix.com/services/js-sdk/1.31.0/js/Wix.js"></script>
+		<link rel="stylesheet" href="../bower_components/normalize-css/normalize.css">
+		<link rel="stylesheet" href="../styles/exampletextures.css">
+
+		<style wix-style>
+
+			body {
+				background-color: {{style.bgColor color-2}};
+				/*background-color: gray;*/
+			}
+
+		</style>
+
+	</head>
+
+	<body ng-app="3dViewer">
+		<div ng-controller="ModelCtrl">
+			<div id="info">
+			<a class="title" href="http://threejs.org" target="_blank">three.js</a> - Wix 3D Viewer Application
+			<br>
+			</div>
+
+			<!-- build:js libraries/plugins.js -->
+			<script src="../bower_components/jquery/dist/jquery.js"></script>
+			<script src="../bower_components/angular/angular.js"></script>
+			<script src="../scripts/services/wix.js"></script>
+			<script src="../libraries/three.min.js"></script>
+			<script src="../libraries/OBJLoader.js"></script>
+			<script src="../libraries/MTLLoader.js"></script>
+			<script src="../libraries/OBJMTLLoader.js"></script>
+			<script src="../libraries/TrackballControls.js"></script>
+			<script src="../libraries/Detector.js"></script>
+			<script type="text/javascript" src="../libraries/jscolor/jscolor.js"></script>
+			<!-- endbuild -->
+
+
+			<!-- build:js scripts/three/objects.js -->
+			<script src="../scripts/three/exampletextures.js"></script>
+			<!-- endbuild -->
+
+			<!-- build:js scripts/canvas.js -->
+			<script src="../scripts/app.js"></script>
+			<script src="../scripts/controllers/model.js"></script>
+			<!-- endbuild -->
+			<div class="pull-left options">
+				<p>
+					Model Rotation <!-- : <span class="view-options cursor-pointer"> {{modelRotation}} </span>
+					<span ng-show="modelRotation"> Rotation --> Speed: {{modelRotationSpeed | number: 1}} <span class="cursor-pointer" ng-click="decreaseModelRotationSpeed()"> - </span> <span class="cursor-pointer" ng-click="increaseModelRotationSpeed()"> + </span> </span>
+				<br>
+					Particles: <span ng-click="toggleParticles()" class="view-options cursor-pointer"> {{particlesOn}} </span>
+					<span ng-show="particlesOn == 'On'"> Rotation Speed: {{particlesRotationSpeed | number: 1}} <span class="cursor-pointer" ng-click="decreaseParticlesRotationSpeed()"> - </span> <span class="cursor-pointer" ng-click="increaseParticlesRotationSpeed()"> + </span> </span>
+				<br>
+					Smoke: <span ng-click="toggleSmoke()" class="view-options cursor-pointer"> {{smokeOn}} </span>
+					<span ng-show="smokeOn == 'On'"> Rotation Speed: {{smokeRotationSpeed | number: 1}} <span class="cursor-pointer" ng-click="decreaseSmokeRotationSpeed()"> - </span> <span class="cursor-pointer" ng-click="increaseSmokeRotationSpeed()"> + </span> Rising Speed: {{smokeRisingSpeed | number: 1}} <span class="cursor-pointer" ng-click="decreaseSmokeRisingSpeed()"> - </span> <span class="cursor-pointer" ng-click="increaseSmokeRisingSpeed()"> + </span> </span>
+				</p>
+			</div>
+
+		</div>
+
+	</body>
+</html>

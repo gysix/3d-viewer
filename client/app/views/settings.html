@@ -1,0 +1,105 @@
+<div class="loading" ng-cloak="">
+	<h3 style="text-align: center">Loading Settings</h3>
+</div>
+
+<div ng-controller="SettingsCtrl">
+	<header class="box description-box">
+		<img class="logo" width="86" src="images/wix_icon.png">
+		<div class="notloggedin-container" ng-hide="provider">
+			<p class="description">The 3D Viewer Application allows you to upload and display your 3D models and configure display options. Visitors of your site will be able to see your work at any camera angle they like. Accepted formats: .obj for models, .mtl for materials, .png for textures.</p>
+	    </div>
+	</header>
+	<div wix-ctrl="Accordion">
+	    <div class="acc-pane">
+	        <h3>Model Settings</h3>
+	        <div class="acc-content">
+	        	<ul class="list">
+	        		<li wix-label="Model File">
+	        			<!-- <div ng-hide="modelUploaded">
+				        	<span class="uilib-text">Supported formats: (.cad, .swf, .svg)</span> 
+				        	<button>Upload File</button>
+				        </div> -->
+				        <form action="/server/models" method="post" enctype="multipart/form-data">
+							<p>Please upload your file (.obj & .mtl files accepted):</p><br>
+							<input type="file" name="datafile">
+							<div><input type="submit" value="Upload"></div>
+						</form>
+			        	<!-- <div ng-show="modelUploaded">
+			        		<img class="sample-model" src="images/Headphones_001.jpg"/>
+			        		<button>Remove</button> 
+			        	</div> -->
+			        </li>
+	        		<li wix-label="Title (Optional)">
+			        	<div wix-model="title" wix-ctrl="Input" wix-options="{placeholder: 'Mona Lisa Sculpture'}"></div>
+			        </li>
+		        	<li wix-label="Model Color">
+		        		<button ng-click="modelColors = !modelColors">
+		        			Customizable colors 
+	        				<span ng-if="!modelColors">off</span>
+	        				<span ng-if="modelColors">on</span>
+		        		</button>
+		        		<div ng-show="modelColors" wix-param="modelColor" wix-ctrl="ColorPicker" wix-options="{startWithColor: 'color-17'}"></div>
+		        	</li>
+		        	<li wix-label="Shading Strength">
+		        		<span class="uilib-text">Light</span>
+		        		<div  wix-model="shadingStrength" wix-ctrl="Slider" wix-options="{ maxValue:100 }"></div>
+		        		<span class="uilib-text slider-post-label">Dark</span>
+		        	</li>
+		        	<li wix-label="Shadow Length">
+		        		<span class="uilib-text">Short</span>
+		        		<div  wix-model="shadowLength" wix-ctrl="Slider" wix-options="{ maxValue:10 }"></div>
+		        		<span class="uilib-text slider-post-label">Long</span>
+		        	</li>
+					
+			        
+		        </ul>
+	        </div>
+	    </div>
+
+	    <div class="acc-pane">
+	        <h3>Environment Settings</h3>
+	        <div class="acc-content">
+	        	<ul class="list">
+					<li wix-label="Lighting Strength">
+						<span class="uilib-text">Dim</span>
+		        		<div  wix-model="lightingStrength" wix-ctrl="Slider" wix-options="{ maxValue:100 }"></div>
+		        		<span class="uilib-text slider-post-label">Bright</span>
+		        	</li>
+		        	<li wix-label="Lighting Color">
+		        		<div wix-model="lightingColor" wix-param="lightingColor" wix-ctrl="ColorPicker" wix-options="{startWithColor: 'color-1'}"></div>
+		        	</li>
+		        	<li wix-label="Lighting Type">
+		        		<div wix-model="lightingType" wix-ctrl="ButtonGroup">
+						    <button value="0" ng-click="disableLightingOptions()">None</button>
+						    <button value="5" ng-click="enableLightingOptions()">Directional</button>
+						    <button value="10" ng-click="enableLightingOptions()">Spot Light</button>
+						    <button value="20" ng-click="disableLightingOptions()">Area</button>
+						    <button value="30" ng-click="disableLightingOptions()">Volume</button>
+						    <button value="40" ng-click="disableLightingOptions()">Ambient</button>
+						    <button value="50" ng-click="disableLightingOptions()">Omni</button>
+						</div>
+		        	</li>
+		        	<li ng-show="lightingOptions" wix-label="Lighting Direction (Optional)">
+		        		<div wix-model="lightingDirection" wix-ctrl="ToggleButtonGroup">
+						    <button value="0">Top</button>
+						    <button value="5">Bottom</button>
+						    <button value="10">Left</button>
+						    <button value="20">Right</button>
+						</div>
+		        	</li>
+		        	<li wix-label="Default Camera">
+		        		<div wix-model="camera" wix-ctrl="ButtonGroup">
+						    <button value="0">Stationary</button>
+						    <button value="5">Smooth Orbit</button>
+						    <button value="20">Random</button>
+						    <button value="30">Jump Cuts</button>
+						</div>
+		        	</li>
+		        	<li wix-label="Background Color">
+		        		<div wix-param="bgColor" wix-ctrl="ColorPicker" wix-options="{startWithColor: 'color-2'}"></div>
+		        	</li>
+	        	</ul>
+	        </div>
+	    </div>
+	</div>
+</div>
